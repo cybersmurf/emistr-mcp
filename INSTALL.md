@@ -4,7 +4,7 @@ Tento dokument vás provede instalací a konfigurací MCP serveru pro eMISTR.
 
 ## Předpoklady
 
-- Python 3.8 nebo vyšší
+- Python 3.11 nebo vyšší
 - Přístup k MariaDB databázi eMISTR
 - Claude Desktop (pro testování)
 

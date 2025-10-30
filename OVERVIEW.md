@@ -55,7 +55,7 @@ emistr-mcp/
 
 ## 🔧 Technologie
 
-- **Python 3.8+** - Programovací jazyk
+- **Python 3.11+** - Programovací jazyk
 - **MCP Protocol 1.0** - Komunikační protokol
 - **aiomysql** - Async MySQL/MariaDB driver
 - **MariaDB 10.x** - Databáze (sud_utf8_aaa)
@@ -77,7 +77,7 @@ Uživatel → Claude AI → MCP Server → Database → Anonymizer → Response 
 
 **MCP Server zpracuje:**
 1. Rozpozná intent → `get_orders` tool
-2. Provede SQL dotaz: `SELECT * FROM c_order WHERE active='ANO'`
+2. Provede SQL dotaz s filtry pro zakázky (např. dle stavu/aktivnosti)
 3. Anonymizuje data: `"Firma ABC"` → `"ZÁKAZNÍK_A1B2C3"`
 4. Vytvoří strukturovanou odpověď s akcí pro UI
 
@@ -141,8 +141,7 @@ Uživatel → Claude AI → MCP Server → Database → Anonymizer → Response 
 
 ### Operace a stroje
 - ✅ Seznam operací
-- ✅ Stav strojů (volné/obsazené)
-- ✅ CNC stroje
+- ✅ Seznam strojů
 
 ### Statistiky
 - ✅ Denní produktivita

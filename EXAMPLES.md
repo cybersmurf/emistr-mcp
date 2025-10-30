@@ -202,10 +202,10 @@ Kolik máme materiálu na skladu?
       {
         "bar_id": "MAT001",
         "name": "Ocel 11500",
-        "stock_quantity": "1250.500",
-        "min_quantity": "500.000",
-        "jednotka": "kg",
-        "warehouse_name": "Hlavní sklad"
+        "stock_quantity": 1250.5,
+        "min_quantity": 500.0,
+        "jednotka": 1,
+        "warehouse_id": 1
       }
     ],
     "summary": {
@@ -282,11 +282,11 @@ Jaké operace máme definované?
 }
 ```
 
-### Stav strojů
+### Seznam strojů
 
 **Dotaz:**
 ```
-Které stroje jsou momentálně volné?
+Zobraz seznam strojů
 ```
 
 **Odpověď:**
@@ -294,27 +294,21 @@ Které stroje jsou momentálně volné?
 {
   "action": {
     "type": "open_window",
-    "window": "machine_list",
-    "filters": {
-      "status_filter": "idle"
-    }
+    "window": "machine_list"
   },
   "data": {
     "items": [
       {
+        "id": 1,
         "name": "Soustruh SU250",
-        "bar_id": "STR001",
-        "current_status": "idle",
-        "active": "ANO"
+        "group_name": "Soustruhy"
       }
     ],
     "summary": {
-      "total_count": 15,
-      "busy_count": 8,
-      "idle_count": 7
+      "total_count": 15
     }
   },
-  "message": "Nalezeno 15 strojů (8 v provozu, 7 nečinných)"
+  "message": "Nalezeno 15 strojů"
 }
 ```
 

@@ -4,21 +4,21 @@
 
 ### 1. Kompletní MCP Server
 - **Funkční Python aplikace** pro komunikaci s eMISTR databází
-- **10 tools** pro práci s daty (zakázky, zaměstnanci, materiály, atd.)
+- **Sada tools** pro práci s daty (zakázky, zaměstnanci, materiály, stroje, statistiky)
 - **Automatická anonymizace** osobních údajů (GDPR compliance)
 - **Unifikovaný JSON formát** pro integraci s Delphi aplikací
 
-### 2. Zdrojové kódy (6 souborů)
+### 2. Zdrojové kódy (hlavní komponenty)
 ```
-✅ server.py              (14 KB) - MCP server
-✅ database.py            (17 KB) - Databázové dotazy  
-✅ anonymizer.py          (9.2 KB) - Anonymizace dat
-✅ response_builder.py    (14 KB) - Konstrukce odpovědí
-✅ config.py              (3.1 KB) - Správa konfigurace
-✅ test_server.py         (7.5 KB) - Testovací suite
+✅ server.py            - MCP server
+✅ database.py          - Databázové dotazy  
+✅ anonymizer.py        - Anonymizace dat
+✅ response_builder.py  - Konstrukce odpovědí
+✅ config.py            - Správa konfigurace
+✅ test_server.py       - Testovací suite
 ```
 
-### 3. Kompletní dokumentace (8 souborů)
+### 3. Kompletní dokumentace
 ```
 ✅ README.md              (6.4 KB) - Hlavní dokumentace
 ✅ QUICKSTART.md          (2.4 KB) - Rychlý start (5 minut)
@@ -39,7 +39,7 @@
 ✅ CHANGELOG.md          - Historie změn
 ```
 
-**Celkem:** 18 souborů, ~134 KB
+**Celkem:** soubory dle přiloženého repozitáře
 
 ---
 
@@ -53,7 +53,7 @@
 - ✅ Audit logging
 
 ### Funkčnost
-- ✅ 10 plně funkčních tools
+- ✅ Plně funkční sada tools dle README/ARCHITECTURE
 - ✅ Podpora pro MariaDB (sud_utf8_aaa)
 - ✅ Async architektura (vysoký výkon)
 - ✅ Connection pooling
@@ -148,8 +148,7 @@
 
 ### ✅ Operace & Stroje
 - Seznam operací
-- Stav strojů (volné/obsazené)
-- CNC stroje
+- Seznam strojů
 
 ### ✅ Statistiky (Stats)
 - Denní produktivita

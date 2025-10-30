@@ -33,6 +33,7 @@ Tento dokument obsahuje přehled všech souborů v projektu a jejich účel.
 - `get_workers()` - Zaměstnanci
 - `get_materials()` - Materiály
 - `get_production_stats()` - Statistiky
+- `get_machines()` - Stroje
 
 ---
 
