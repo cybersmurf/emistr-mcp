@@ -1,0 +1,46 @@
+name: Integration Tests (optional)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    services:
+      mariadb:
+        image: mariadb:10.6
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: emistr
+          MYSQL_USER: emistr
+          MYSQL_PASSWORD: emistr
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping -h 127.0.0.1 -uroot -proot || exit 1"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+      - name: Wait for MariaDB to be healthy
+        run: |
+          for i in {1..30}; do
+            if docker ps --format '{{.Names}} {{.Status}}' | grep -q 'mariadb.*(healthy)'; then
+              echo "MariaDB is healthy"; break;
+            fi
+            echo "Waiting for MariaDB..."; sleep 2;
+          done
+      - name: Run integration tests (if present)
+        run: |
+          if [ -d tests_integration ]; then pytest -q tests_integration; else echo "No tests_integration directory"; fi
