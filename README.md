@@ -12,28 +12,26 @@ MCP (Model Context Protocol) server pro integraci s eMISTR ERP systémem. Tento 
 ## 📋 Podporované funkce
 
 ### Zakázky (Orders)
-- `get_orders` - Seznam zakázek s filtry
-- `get_order_detail` - Detail zakázky včetně operací
-- `get_order_operations` - Operace zakázky
+- `get_orders` - Seznam zakázek s filtry (podpora `columns` pro filtrování polí, `active` jako integer)
+- `get_order_detail` - Detail zakázky včetně operací a materiálu
 - `search_orders` - Fulltextové vyhledávání v zakázkách
 
 ### Zaměstnanci (Workers)
 - `get_workers` - Seznam zaměstnanců
-- `get_worker_detail` - Detail zaměstnance včetně statistik
-- `get_worker_attendance` - Docházka zaměstnance
+- `get_worker_detail` - Detail zaměstnance včetně základních statistik
 
 ### Materiál (Materials)
-- `get_materials` - Seznam materiálů na skladu
+- `get_materials` - Seznam materiálů na skladu (pole dle schématu `sklad_material`)
 - `get_material_movements` - Pohyby materiálu
-- `get_material_stock` - Aktuální stavy zásob
 
 ### Operace (Operations)
 - `get_operations` - Seznam operací
-- `get_operation_detail` - Detail operace
 
 ### Stroje (Machines)
-- `get_machines` - Seznam strojů
-- `get_machine_status` - Aktuální stav stroje
+- `get_machines` - Seznam strojů (schéma `stroje` + `stroj_group`)
+
+### Statistiky (Production)
+- `get_production_stats` - Souhrn hodin a top operací v období (počítáno z rozdílu `finish-start`)
 
 ## 🔒 Anonymizace
 

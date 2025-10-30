@@ -53,6 +53,7 @@ Správce databázového připojení a dotazů.
 - `get_workers()` - Seznam zaměstnanců
 - `get_materials()` - Seznam materiálů
 - `get_production_stats()` - Statistiky výroby
+- `get_machines()` - Seznam strojů
 
 **Bezpečnost:**
 - Pouze READ-ONLY dotazy
@@ -273,7 +274,7 @@ Pro přidání nového toolu:
 
 ## Verze a kompatibilita
 
-- **Python**: 3.8+
+- **Python**: 3.11+
 - **MariaDB**: 10.x+
 - **MCP Protocol**: 1.0+
 - **Claude Desktop**: Latest
