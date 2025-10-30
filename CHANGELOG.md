@@ -20,7 +20,7 @@ a projekt se řídí [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   - `get_materials` - Seznam materiálů na skladu
   - `get_material_movements` - Pohyby materiálu
   - `get_operations` - Seznam operací
-  - `get_machines` - Seznam strojů a jejich stav
+  - `get_machines` - Seznam strojů
   - `get_production_stats` - Statistiky výroby
 
 ### Bezpečnost
@@ -43,6 +43,17 @@ a projekt se řídí [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - requirements.txt - Python závislosti
 
 ## [Unreleased]
+
+### Přidáno
+- CI workflow (GitHub Actions) pro testy/lint
+- Issue templates (bug, feature)
+
+### Změněno
+- `get_machines`: dotaz upraven dle schématu (`stroje` + `stroj_group`), odstraněna závislost na stavech
+- `get_production_stats`: výpočet hodin pomocí `TIMESTAMPDIFF(SECOND, start, finish)/3600.0`, filtrování podle `rd.start`
+- `get_materials`: pole sjednocena dle `sklad_material`, `IFNULL` pro numerické hodnoty
+- `get_orders`: přidán parametr `columns` pro filtrování polí; `active` vracen jako integer
+- Dokumentace: README/ARCHITECTURE/INSTALL/OVERVIEW/EXAMPLES/DELIVERY/INDEX aktualizovány
 
 ### Plánováno
 - Cache layer pro rychlejší odpovědi
