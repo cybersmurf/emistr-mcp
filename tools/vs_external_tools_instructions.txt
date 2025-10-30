@@ -1,0 +1,25 @@
+Visual Studio - External Tool setup for MCP client
+
+1) Add External Tool
+- In Visual Studio: Tools ? External Tools ? Add
+- Title: MCP Client
+- Command: C:\\Python\\Python311\\python.exe (or path to your python)
+- Arguments: "$(SolutionDir)mcp_client.py" --name "get_orders" --arguments "{}"
+- Initial directory: $(SolutionDir)
+- Check: Use Output window (optional)
+
+Notes:
+- You can change the arguments at invocation by editing the External Tools entry before running, or create multiple entries for common calls.
+- Alternatively, run the client with the command line or from the Package Manager Console in Visual Studio.
+
+2) Optional: add to toolbar
+- Tools ? Customize ? Commands ? Add Command ? Tools ? (select your new tool)
+- Place it on a toolbar for quick access.
+
+3) Environment override
+- By default the client will call the URL in environment variable MCP_URL, or the default http://127.0.0.1:9201/mcp.
+- To override, set MCP_URL in your system/user environment variables or pass --url.
+
+4) Example usage from Developer Command Prompt / PowerShell:
+- python mcp_client.py --name get_orders --arguments "{\"limit\":10}"
+- POWERSHELL: $env:MCP_URL='http://127.0.0.1:9201/mcp'; python mcp_client.py --name get_orders --arguments '{"limit":10}'

@@ -1,0 +1,5 @@
+from fastapi import FastAPI
+from fastmcp import routers
+
+app = FastAPI(title="FastMCP")
+app.include_router(routers.router)

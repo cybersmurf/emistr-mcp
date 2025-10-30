@@ -1,0 +1,40 @@
+﻿from fastapi import APIRouter, Depends, HTTPException, Request
+from fastmcp.models import ToolCall, ToolResponse
+from typing import Any
+import json
+
+from server import call_tool as legacy_call_tool, initialize as legacy_initialize
+
+router = APIRouter()
+
+
+@router.on_event("startup")
+async def startup_event():
+    await legacy_initialize()
+
+
+@router.get("/health")
+async def health():
+    return {"status": "ok"}
+
+
+@router.post("/mcp", response_model=ToolResponse)
+async def mcp(call: ToolCall, request: Request):
+    # basic logging
+    client_ip = request.client.host if request.client else 'unknown'
+    # validate arguments type already enforced by pydantic
+    try:
+        result_contents = await legacy_call_tool(call.name, call.arguments)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+    # extract first TextContent as legacy server did
+    if result_contents:
+        first = result_contents[0]
+        try:
+            parsed = json.loads(first.text)
+        except Exception:
+            parsed = first.text
+        return parsed
+
+    return {"status": "error", "message": "empty response"}

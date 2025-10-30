@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+"""Simple MCP HTTP client used for manual testing and automation."""
+import sys
+import os
+import json
+import argparse
+import requests
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    default_url = os.environ.get('MCP_URL', 'http://127.0.0.1:9201/mcp')
+    parser.add_argument("--url", default=default_url)
+    parser.add_argument("--name", required=True)
+    parser.add_argument("--arguments", default="{}", help="JSON string for arguments")
+    args = parser.parse_args()
+
+    try:
+        arguments = json.loads(args.arguments)
+    except json.JSONDecodeError:
+        print("Invalid JSON for --arguments")
+        sys.exit(2)
+
+    payload = {"name": args.name, "arguments": arguments}
+    resp = requests.post(args.url, json=payload, timeout=10)
+    print(resp.status_code)
+    try:
+        print(json.dumps(resp.json(), ensure_ascii=False, indent=2))
+    except Exception:
+        print(resp.text)
+
+
+if __name__ == "__main__":
+    main()

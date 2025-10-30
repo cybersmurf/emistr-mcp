@@ -1,0 +1,68 @@
+﻿import asyncio
+import json
+import pytest
+from aiohttp import web
+
+from server import mcp_handler, initialize
+
+
+@pytest.fixture
+async def aiohttp_client(loop, aiohttp_client):
+ # reuse pytest-aiohttp's aiohttp_client fixture
+ return aiohttp_client
+
+
+@pytest.fixture
+async def app(aiohttp_client):
+ # Initialize server components (mocks if needed)
+ await initialize()
+ app = web.Application()
+ app.router.add_post('/mcp', mcp_handler)
+ app.router.add_get('/health', lambda request: web.json_response({"status": "ok"}))
+ return app
+
+
+@pytest.mark.asyncio
+async def test_health(aiohttp_client, app):
+ client = await aiohttp_client(app)
+ resp = await client.get('/health')
+ assert resp.status ==200
+ data = await resp.json()
+ assert data['status'] == 'ok'
+
+
+@pytest.mark.asyncio
+async def test_mcp_valid(aiohttp_client, app, monkeypatch):
+ # Patch DB calls to avoid external dependency
+ async def fake_get_orders(**kwargs):
+ return [{"id":1, "code": "2024/001"}]
+
+ class FakeDB:
+ async def connect(self):
+ pass
+ async def get_orders(self, **kwargs):
+ return await fake_get_orders(**kwargs)
+
+ from server import _db
+ monkeypatch.setattr('server._db', FakeDB())
+
+ client = await aiohttp_client(app)
+ payload = {"name": "get_orders", "arguments": {}}
+ resp = await client.post('/mcp', json=payload)
+ assert resp.status ==200
+ data = await resp.json()
+ assert 'status' in data
+
+
+@pytest.mark.asyncio
+async def test_mcp_wrong_content_type(aiohttp_client, app):
+ client = await aiohttp_client(app)
+ resp = await client.post('/mcp', data='test', headers={'Content-Type': 'text/plain'})
+ assert resp.status ==415
+
+
+@pytest.mark.asyncio
+async def test_mcp_empty_body(aiohttp_client, app):
+ client = await aiohttp_client(app)
+ resp = await client.post('/mcp', data='', headers={'Content-Type': 'application/json'})
+ assert resp.status ==400

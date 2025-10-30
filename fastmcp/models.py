@@ -1,0 +1,12 @@
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
+
+class ToolCall(BaseModel):
+ name: str
+ arguments: Dict[str, Any] = {}
+
+class ToolResponse(BaseModel):
+ status: str
+ data: Optional[Any] = None
+ message: Optional[str] = None
+ action: Optional[Dict[str, Any]] = None

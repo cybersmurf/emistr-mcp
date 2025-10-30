@@ -1,0 +1,12 @@
+[
+  {
+    "id": "emistr-mcp-local",
+    "name": "eMISTR MCP Server",
+    "publisher": "Vlastní",
+    "description": "Připojení na lokální eMISTR ERP pro získávání dat o zakázkách.",
+    "http": {
+      "baseUrl": "http://127.0.0.1:9201",
+      "callToolPath": "/mcp"
+    }
+  }
+]

@@ -1,0 +1,379 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sramek\\.mcp.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\database.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\server.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:server.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\mcp\\server.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:mcp\\server.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\mcp_client.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:mcp_client.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\requirements-dev.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:requirements-dev.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tests\\test_mcp.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tests\\test_mcp.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\mcp\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:mcp\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\mcp\\types.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:mcp\\types.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tools\\vs_external_tools_instructions.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tools\\vs_external_tools_instructions.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tools\\run_mcp_and_clip.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tools\\run_mcp_and_clip.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tools\\vsix_scaffold\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tools\\vsix_scaffold\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tools\\vsix_scaffold\\McpToolCommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tools\\vsix_scaffold\\McpToolCommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:fastmcp\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:fastmcp\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\models.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:fastmcp\\models.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\routers.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:fastmcp\\routers.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\Dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:fastmcp\\Dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:fastmcp\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\Dockerfile.fastmcp||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Dockerfile.fastmcp||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\services.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:fastmcp\\services.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\tests\\test_fastmcp.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:fastmcp\\tests\\test_fastmcp.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": ".mcp.json",
+              "DocumentMoniker": "C:\\Users\\sramek\\.mcp.json",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Users\\sramek\\.mcp.json",
+              "ToolTip": "C:\\Users\\sramek\\.mcp.json",
+              "RelativeToolTip": "..\\..\\..\\..\\Users\\sramek\\.mcp.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-30T16:42:26.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cde3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "test_fastmcp.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\tests\\test_fastmcp.py",
+              "RelativeDocumentMoniker": "fastmcp\\tests\\test_fastmcp.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\tests\\test_fastmcp.py",
+              "RelativeToolTip": "fastmcp\\tests\\test_fastmcp.py",
+              "ViewState": "AgIAAB0AAAAAAAAAAIBJwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T10:57:32.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "services.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\services.py",
+              "RelativeDocumentMoniker": "fastmcp\\services.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\services.py",
+              "RelativeToolTip": "fastmcp\\services.py",
+              "ViewState": "AgIAAC0AAAAAAAAAAIBJwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T10:57:17.052Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Dockerfile.fastmcp",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\Dockerfile.fastmcp",
+              "RelativeDocumentMoniker": "Dockerfile.fastmcp",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\Dockerfile.fastmcp",
+              "RelativeToolTip": "Dockerfile.fastmcp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-30T10:56:04.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "requirements.txt",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\requirements.txt",
+              "RelativeDocumentMoniker": "fastmcp\\requirements.txt",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\requirements.txt",
+              "RelativeToolTip": "fastmcp\\requirements.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-10-30T10:55:52.519Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\Dockerfile",
+              "RelativeDocumentMoniker": "fastmcp\\Dockerfile",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\Dockerfile",
+              "RelativeToolTip": "fastmcp\\Dockerfile",
+              "ViewState": "AgIAAAUAAAAAAAAAAABBwAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-30T10:54:38.355Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "routers.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\routers.py",
+              "RelativeDocumentMoniker": "fastmcp\\routers.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\routers.py",
+              "RelativeToolTip": "fastmcp\\routers.py",
+              "ViewState": "AgIAADUAAAAAAAAAAIBJwDcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T10:54:32.702Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "models.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\models.py",
+              "RelativeDocumentMoniker": "fastmcp\\models.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\models.py",
+              "RelativeToolTip": "fastmcp\\models.py",
+              "ViewState": "AgIAAAoAAAAAAAAAAIBJwAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T10:54:26.055Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "main.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\main.py",
+              "RelativeDocumentMoniker": "fastmcp\\main.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\main.py",
+              "RelativeToolTip": "fastmcp\\main.py",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T10:54:18.888Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "__init__.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\__init__.py",
+              "RelativeDocumentMoniker": "fastmcp\\__init__.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\fastmcp\\__init__.py",
+              "RelativeToolTip": "fastmcp\\__init__.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T10:54:13.15Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "database.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\database.py",
+              "RelativeDocumentMoniker": "database.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\database.py",
+              "RelativeToolTip": "database.py",
+              "ViewState": "AgIAAEwAAAAAMzMzMzMXwEsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T10:27:48.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "McpToolCommand.cs",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tools\\vsix_scaffold\\McpToolCommand.cs",
+              "RelativeDocumentMoniker": "tools\\vsix_scaffold\\McpToolCommand.cs",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tools\\vsix_scaffold\\McpToolCommand.cs",
+              "RelativeToolTip": "tools\\vsix_scaffold\\McpToolCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T10:22:28.281Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tools\\vsix_scaffold\\README.md",
+              "RelativeDocumentMoniker": "tools\\vsix_scaffold\\README.md",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tools\\vsix_scaffold\\README.md",
+              "RelativeToolTip": "tools\\vsix_scaffold\\README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-30T10:20:40.478Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "run_mcp_and_clip.ps1",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tools\\run_mcp_and_clip.ps1",
+              "RelativeDocumentMoniker": "tools\\run_mcp_and_clip.ps1",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tools\\run_mcp_and_clip.ps1",
+              "RelativeToolTip": "tools\\run_mcp_and_clip.ps1",
+              "ViewState": "AgIAAHQAAAAAAAAAAIBJwHYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-30T10:20:31.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "vs_external_tools_instructions.txt",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tools\\vs_external_tools_instructions.txt",
+              "RelativeDocumentMoniker": "tools\\vs_external_tools_instructions.txt",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tools\\vs_external_tools_instructions.txt",
+              "RelativeToolTip": "tools\\vs_external_tools_instructions.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-10-30T10:19:35.257Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "types.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\mcp\\types.py",
+              "RelativeDocumentMoniker": "mcp\\types.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\mcp\\types.py",
+              "RelativeToolTip": "mcp\\types.py",
+              "ViewState": "AgIAABAAAAAAAAAAAIBJwBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T10:12:36.995Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "server.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\mcp\\server.py",
+              "RelativeDocumentMoniker": "mcp\\server.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\mcp\\server.py",
+              "RelativeToolTip": "mcp\\server.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T10:12:33.173Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "__init__.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\mcp\\__init__.py",
+              "RelativeDocumentMoniker": "mcp\\__init__.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\mcp\\__init__.py",
+              "RelativeToolTip": "mcp\\__init__.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T10:12:28.551Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "test_mcp.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tests\\test_mcp.py",
+              "RelativeDocumentMoniker": "tests\\test_mcp.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\tests\\test_mcp.py",
+              "RelativeToolTip": "tests\\test_mcp.py",
+              "ViewState": "AgIAAEgAAAAAAAAAAIBJwEoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T10:11:07.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "mcp_client.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\mcp_client.py",
+              "RelativeDocumentMoniker": "mcp_client.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\mcp_client.py",
+              "RelativeToolTip": "mcp_client.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T10:10:59.918Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "requirements-dev.txt",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\requirements-dev.txt",
+              "RelativeDocumentMoniker": "requirements-dev.txt",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\requirements-dev.txt",
+              "RelativeToolTip": "requirements-dev.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-10-30T10:10:53.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "server.py",
+              "DocumentMoniker": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\server.py",
+              "RelativeDocumentMoniker": "server.py",
+              "ToolTip": "C:\\temp\\emistr-mcp\\220.6\\emistr-mcp\\server.py",
+              "RelativeToolTip": "server.py",
+              "ViewState": "AgIAAEYAAAAAAAAAAIAwwCAAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-10-30T09:22:03.645Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
