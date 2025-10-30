@@ -30,4 +30,4 @@ jobs:
           if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
       - name: Run tests
         run: |
-          if [ -d tests ]; then pytest -q; else echo "No tests directory"; fi
+          if [ -d tests ]; then pytest -q tests; else echo "No tests directory"; fi
