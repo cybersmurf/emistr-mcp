@@ -35,6 +35,7 @@ emistr_mcp.log
 
 # IDE
 .vscode/
+.vs/
 .idea/
 *.swp
 *.swo

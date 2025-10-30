@@ -1,9 +1,0 @@
-services:
-  emistr-mcp:
-    build: .
-    container_name: emistr-mcp-server
-    restart: always
-    environment:
-      # Explicitně říkáme aplikaci, kde je konfigurační soubor
-      - EMISTR_CONFIG=/app/config/config.json
-    network_mode: bridge
