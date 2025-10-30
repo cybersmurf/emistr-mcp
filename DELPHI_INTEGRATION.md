@@ -43,7 +43,7 @@ Otevře konkrétní okno v aplikaci s možnými filtry.
   "type": "open_window",
   "window": "order_list",
   "filters": {
-    "status": "ANO",
+    "active": 1,
     "date_from": "2024-01-01"
   }
 }
@@ -391,27 +391,23 @@ end;
     "type": "open_window",
     "window": "order_list",
     "filters": {
-      "status": "ANO"
+      "active": 1
     }
   },
   "data": {
     "items": [
       {
-        "id": "12345",
+        "id": 12345,
         "code": "2024/001",
         "name": "Výrobek A",
         "customer_name": "ZÁKAZNÍK_001",
         "start": "2024-01-15",
         "finish": "2024-02-15",
-        "active": "ANO",
-        "kusu": "100.000",
-        "prevedeno": "65.500"
+        "active": 1
       }
     ],
     "summary": {
-      "total_count": 15,
-      "active_count": 12,
-      "delayed_count": 2
+      "total_count": 15
     },
     "metadata": {
       "columns": [
