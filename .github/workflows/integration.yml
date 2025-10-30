@@ -43,4 +43,9 @@ jobs:
           done
       - name: Run integration tests (if present)
         run: |
+          export EMISTR_DB_HOST=127.0.0.1
+          export EMISTR_DB_PORT=3306
+          export EMISTR_DB_USER=emistr
+          export EMISTR_DB_PASSWORD=emistr
+          export EMISTR_DB_NAME=emistr
           if [ -d tests_integration ]; then pytest -q tests_integration; else echo "No tests_integration directory"; fi
