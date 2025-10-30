@@ -33,10 +33,11 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+          pip install aiomysql
       - name: Wait for MariaDB to be healthy
         run: |
-          for i in {1..30}; do
-            if docker ps --format '{{.Names}} {{.Status}}' | grep -q 'mariadb.*(healthy)'; then
+          for i in {1..60}; do
+            if docker ps --format '{{.Names}} {{.Status}}' | grep -q '(healthy)'; then
               echo "MariaDB is healthy"; break;
             fi
             echo "Waiting for MariaDB..."; sleep 2;
