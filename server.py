@@ -470,13 +470,29 @@ async def mcp_get_handler(request: web.Request):
         logger.exception("Error while listing tools at GET /mcp")
         return web.json_response({"error": "Internal server error during tool listing"}, status=500)
 
+    # Build JSON-RPC style envelope with offerings encoded as text content
+    try:
+        offerings_text = json.dumps(offerings, ensure_ascii=False)
+        rpc_payload = {
+            "jsonrpc": "2.0",
+            "id": None,
+            "result": {
+                "content": [
+                    {"type": "text", "text": offerings_text}
+                ]
+            }
+        }
+    except Exception:
+        logger.exception("Error while encoding offerings for JSON-RPC envelope")
+        return web.json_response({"error": "Internal server error during offerings encoding"}, status=500)
+
     if 'text/event-stream' in accept:
-        # Send offerings as a single SSE data event
-        body = f"data: {json.dumps(offerings, ensure_ascii=False)}\n\n"
+        # Send offerings as a single SSE JSON-RPC event
+        body = f"data: {json.dumps(rpc_payload, ensure_ascii=False)}\n\n"
         return web.Response(text=body, content_type='text/event-stream')
 
-    # Default: return plain offerings JSON (no JSON-RPC envelope on GET)
-    return web.json_response(offerings, status=200)
+    # Default: return JSON-RPC envelope (improves compatibility with some clients)
+    return web.json_response(rpc_payload, status=200)
 
 async def list_tools_handler(request: web.Request):
     """HTTP handler for listing available tools (plain offerings)."""
