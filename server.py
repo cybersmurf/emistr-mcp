@@ -507,10 +507,10 @@ async def main() -> None:
 
     runner = web.AppRunner(web_app)
     await runner.setup()
-    site = web.TCPSite(runner, host='0.0.0.0', port=9001)
+    site = web.TCPSite(runner, host='0.0.0.0', port=9201)
     await site.start()
 
-    logger.info("eMISTR MCP HTTP Server started on port 9001")
+    logger.info("eMISTR MCP HTTP Server started on port 9201")
 
     try:
         while True:
