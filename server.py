@@ -413,6 +413,37 @@ async def mcp_post_handler(request: web.Request):
             status=200
         )
 
+    # Handle MCP spec method tools/list (Cursor expects result.tools array)
+    if tool_name in ('tools/list', 'tools.list'):
+        try:
+            tools_list = await list_tools()
+            tools_dicts = [tool.to_dict() if hasattr(tool, 'to_dict') else tool for tool in tools_list]
+            return web.json_response(
+                {"jsonrpc": "2.0", "id": payload_id, "result": {"tools": tools_dicts}},
+                status=200
+            )
+        except Exception:
+            logger.exception("Error while listing tools via tools/list")
+            return web.json_response(
+                {"jsonrpc": "2.0", "id": payload_id, "error": {"code": -32000, "message": "Internal server error during tools/list"}},
+                status=200
+            )
+
+    # Handle MCP spec method resources/list (Cursor expects result.resources array)
+    if tool_name in ('resources/list', 'resources.list'):
+        try:
+            resources: List[Dict[str, Any]] = []
+            return web.json_response(
+                {"jsonrpc": "2.0", "id": payload_id, "result": {"resources": resources}},
+                status=200
+            )
+        except Exception:
+            logger.exception("Error while listing resources via resources/list")
+            return web.json_response(
+                {"jsonrpc": "2.0", "id": payload_id, "error": {"code": -32000, "message": "Internal server error during resources/list"}},
+                status=200
+            )
+
     # Handle MCP spec method tools/call -> delegates to our internal tool dispatcher
     if tool_name == 'tools/call':
         inner_name = tool_arguments.get('name') if isinstance(tool_arguments, Mapping) else None
