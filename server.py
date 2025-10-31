@@ -385,6 +385,20 @@ async def mcp_post_handler(request: web.Request):
         except Exception:
             pass
 
+        # Return offerings directly as JSON-RPC result (not wrapped in content)
+        try:
+            offerings = await _get_server_offerings()
+            return web.json_response(
+                {"jsonrpc": "2.0", "id": payload_id, "result": offerings},
+                status=200
+            )
+        except Exception:
+            logger.exception("Error while generating offerings for initialize")
+            return web.json_response(
+                {"jsonrpc": "2.0", "id": payload_id, "error": {"code": -32000, "message": "Internal server error during initialize"}},
+                status=200
+            )
+
     if not tool_name or tool_arguments is None:
         logger.warning("Invalid MCP request from %s: missing 'method' or 'params' - keys: %s", client_ip, list(payload.keys()))
         return web.json_response(
@@ -470,29 +484,13 @@ async def mcp_get_handler(request: web.Request):
         logger.exception("Error while listing tools at GET /mcp")
         return web.json_response({"error": "Internal server error during tool listing"}, status=500)
 
-    # Build JSON-RPC style envelope with offerings encoded as text content
-    try:
-        offerings_text = json.dumps(offerings, ensure_ascii=False)
-        rpc_payload = {
-            "jsonrpc": "2.0",
-            "id": None,
-            "result": {
-                "content": [
-                    {"type": "text", "text": offerings_text}
-                ]
-            }
-        }
-    except Exception:
-        logger.exception("Error while encoding offerings for JSON-RPC envelope")
-        return web.json_response({"error": "Internal server error during offerings encoding"}, status=500)
-
     if 'text/event-stream' in accept:
-        # Send offerings as a single SSE JSON-RPC event
-        body = f"data: {json.dumps(rpc_payload, ensure_ascii=False)}\n\n"
+        # Send offerings as a single SSE data event (plain offerings JSON)
+        body = f"data: {json.dumps(offerings, ensure_ascii=False)}\n\n"
         return web.Response(text=body, content_type='text/event-stream')
 
-    # Default: return JSON-RPC envelope (improves compatibility with some clients)
-    return web.json_response(rpc_payload, status=200)
+    # Default: return plain offerings JSON (no JSON-RPC envelope on GET)
+    return web.json_response(offerings, status=200)
 
 async def list_tools_handler(request: web.Request):
     """HTTP handler for listing available tools (plain offerings)."""
