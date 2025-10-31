@@ -170,7 +170,7 @@ async def list_tools() -> List[Tool]:
         ),
         Tool(
             name="get_machines",
-            description="Seznam strojů a jejich aktuální stav.",
+            description="Seznam strojů.",
             inputSchema={"type": "object", "properties": {"status_filter": {"type": "string"}, "limit": {"type": "integer"}}}
         ),
         Tool(
