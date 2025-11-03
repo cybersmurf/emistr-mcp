@@ -88,3 +88,19 @@ data/
 final_user_1.pdf
 final_user_1.txt
 database_schema.sql
+
+# Local dev/test artifacts
+call_get_orders.ps1
+fastmcp/
+get_orders_body.json
+get_orders_body_rpc.json
+get_orders_body_simple.json
+get_orders_call.json
+get_orders_direct.json
+mcp/
+mcp_client.py
+module/
+old_version_not_use/
+tmp_get_orders_call.json
+tools/extract_pdf.py
+tools/vsix_scaffold/
