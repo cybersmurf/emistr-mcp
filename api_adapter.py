@@ -102,27 +102,33 @@ class OrdersQuery(BaseModel):
     columns: Optional[List[str]] = None
 
 
-@app.get("/health")
+@app.get("/health", operation_id="health_check", summary="Health check", tags=["System"])
 async def health():
     return {"status": "ok"}
 
 
-@app.get("/tools")
+@app.get("/tools", operation_id="list_tools", summary="List available MCP tools", tags=["System"])
 async def list_tools():
     tools = await mcp_server.list_tools()
     as_dicts = [await _tool_to_dict(t) for t in tools]
     return {"tools": as_dicts}
 
 
-@app.get("/orders")
+@app.get(
+    "/orders",
+    operation_id="get_orders",
+    summary="Get list of orders",
+    description="Získá seznam zakázek s možností filtrování podle statusu, zákazníka, data a limitu.",
+    tags=["Orders"]
+)
 async def get_orders(
-    status: Optional[str] = Query(default=None),
-    customer_id: Optional[str] = Query(default=None),
-    date_from: Optional[str] = Query(default=None),
-    date_to: Optional[str] = Query(default=None),
-    limit: Optional[str] = Query(default=None),
-    offset: Optional[str] = Query(default=None),
-    columns: Optional[List[str]] = Query(default=None),
+    status: Optional[str] = Query(default=None, description="Filtr podle statusu zakázky"),
+    customer_id: Optional[str] = Query(default=None, description="ID zákazníka"),
+    date_from: Optional[str] = Query(default=None, description="Datum od (YYYY-MM-DD)"),
+    date_to: Optional[str] = Query(default=None, description="Datum do (YYYY-MM-DD)"),
+    limit: Optional[str] = Query(default=None, description="Maximální počet výsledků (default: 50)"),
+    offset: Optional[str] = Query(default=None, description="Počet záznamů k přeskočení (default: 0)"),
+    columns: Optional[List[str]] = Query(default=None, description="Volitelný seznam sloupců k vrácení"),
 ):
     # Parse optional integers from WebUI (handles empty strings)
     customer_id_int = parse_optional_int(customer_id)
@@ -146,22 +152,43 @@ async def get_orders(
     return await call_mcp_tool("get_orders", args)
 
 
-@app.get("/orders/{order_id}")
+@app.get(
+    "/orders/{order_id}",
+    operation_id="get_order_detail",
+    summary="Get order detail",
+    description="Získá detail zakázky včetně operací, materiálů a dokumentů.",
+    tags=["Orders"]
+)
 async def get_order_detail(order_id: int):
     return await call_mcp_tool("get_order_detail", {"order_id": order_id})
 
 
-@app.get("/orders:search")
-async def search_orders(search_term: str = Query(...), limit: Optional[str] = Query(default=None)):
+@app.get(
+    "/orders:search",
+    operation_id="search_orders",
+    summary="Search orders",
+    description="Fulltextové vyhledávání v zakázkách podle názvu, kódu, čísla objednávky nebo poznámek.",
+    tags=["Orders"]
+)
+async def search_orders(
+    search_term: str = Query(..., description="Hledaný výraz"),
+    limit: Optional[str] = Query(default=None, description="Maximální počet výsledků (default: 20)")
+):
     limit_int = parse_optional_int(limit)
     return await call_mcp_tool("search_orders", {"search_term": search_term, "limit": limit_int if limit_int is not None else 20})
 
 
-@app.get("/workers")
+@app.get(
+    "/workers",
+    operation_id="get_workers",
+    summary="Get list of workers",
+    description="Získá seznam zaměstnanců s možností filtrování.",
+    tags=["Workers"]
+)
 async def get_workers(
-    status: Optional[str] = Query(default=None),
-    group_name: Optional[str] = Query(default=None),
-    limit: Optional[str] = Query(default=None),
+    status: Optional[str] = Query(default=None, description="Filtr podle statusu (aktivní/neaktivní)"),
+    group_name: Optional[str] = Query(default=None, description="Název skupiny"),
+    limit: Optional[str] = Query(default=None, description="Maximální počet výsledků (default: 50)"),
 ):
     limit_int = parse_optional_int(limit)
     args: Dict[str, Any] = {
@@ -173,13 +200,28 @@ async def get_workers(
     return await call_mcp_tool("get_workers", args)
 
 
-@app.get("/workers/{worker_id}")
+@app.get(
+    "/workers/{worker_id}",
+    operation_id="get_worker_detail",
+    summary="Get worker detail",
+    description="Detail zaměstnance včetně statistik výkonu.",
+    tags=["Workers"]
+)
 async def get_worker_detail(worker_id: int):
     return await call_mcp_tool("get_worker_detail", {"worker_id": worker_id})
 
 
-@app.get("/materials")
-async def get_materials(low_stock_only: Optional[str] = Query(default=None), limit: Optional[str] = Query(default=None)):
+@app.get(
+    "/materials",
+    operation_id="get_materials",
+    summary="Get list of materials",
+    description="Seznam materiálů na skladu.",
+    tags=["Materials"]
+)
+async def get_materials(
+    low_stock_only: Optional[str] = Query(default=None, description="Pouze materiály s nízkým stavem (true/false)"),
+    limit: Optional[str] = Query(default=None, description="Maximální počet výsledků (default: 50)")
+):
     low_stock_bool = parse_optional_bool(low_stock_only)
     limit_int = parse_optional_int(limit)
     return await call_mcp_tool("get_materials", {
@@ -188,12 +230,18 @@ async def get_materials(low_stock_only: Optional[str] = Query(default=None), lim
     })
 
 
-@app.get("/materials/movements")
+@app.get(
+    "/materials/movements",
+    operation_id="get_material_movements",
+    summary="Get material movements",
+    description="Pohyby materiálu (příjmy/výdeje).",
+    tags=["Materials"]
+)
 async def get_material_movements(
-    material_id: Optional[str] = Query(default=None),
-    date_from: Optional[str] = Query(default=None),
-    date_to: Optional[str] = Query(default=None),
-    limit: Optional[str] = Query(default=None),
+    material_id: Optional[str] = Query(default=None, description="ID materiálu"),
+    date_from: Optional[str] = Query(default=None, description="Datum od (YYYY-MM-DD)"),
+    date_to: Optional[str] = Query(default=None, description="Datum do (YYYY-MM-DD)"),
+    limit: Optional[str] = Query(default=None, description="Maximální počet výsledků (default: 100)"),
 ):
     material_id_int = parse_optional_int(material_id)
     limit_int = parse_optional_int(limit)
@@ -207,8 +255,17 @@ async def get_material_movements(
     return await call_mcp_tool("get_material_movements", args)
 
 
-@app.get("/operations")
-async def get_operations(operation_group: Optional[str] = Query(default=None), limit: Optional[str] = Query(default=None)):
+@app.get(
+    "/operations",
+    operation_id="get_operations",
+    summary="Get list of operations",
+    description="Seznam operací (pracovní postupy).",
+    tags=["Operations"]
+)
+async def get_operations(
+    operation_group: Optional[str] = Query(default=None, description="Skupina operací"),
+    limit: Optional[str] = Query(default=None, description="Maximální počet výsledků (default: 50)")
+):
     limit_int = parse_optional_int(limit)
     args: Dict[str, Any] = {"limit": limit_int if limit_int is not None else 50}
     if operation_group:
@@ -216,8 +273,17 @@ async def get_operations(operation_group: Optional[str] = Query(default=None), l
     return await call_mcp_tool("get_operations", args)
 
 
-@app.get("/machines")
-async def get_machines(status_filter: Optional[str] = Query(default=None), limit: Optional[str] = Query(default=None)):
+@app.get(
+    "/machines",
+    operation_id="get_machines",
+    summary="Get list of machines",
+    description="Seznam strojů.",
+    tags=["Machines"]
+)
+async def get_machines(
+    status_filter: Optional[str] = Query(default=None, description="Filtr podle statusu stroje"),
+    limit: Optional[str] = Query(default=None, description="Maximální počet výsledků (default: 50)")
+):
     limit_int = parse_optional_int(limit)
     args: Dict[str, Any] = {"limit": limit_int if limit_int is not None else 50}
     if status_filter:
@@ -225,8 +291,17 @@ async def get_machines(status_filter: Optional[str] = Query(default=None), limit
     return await call_mcp_tool("get_machines", args)
 
 
-@app.get("/production/stats")
-async def get_production_stats(date_from: str = Query(...), date_to: str = Query(...)):
+@app.get(
+    "/production/stats",
+    operation_id="get_production_stats",
+    summary="Get production statistics",
+    description="Statistiky výroby za období.",
+    tags=["Production"]
+)
+async def get_production_stats(
+    date_from: str = Query(..., description="Datum od (YYYY-MM-DD)"),
+    date_to: str = Query(..., description="Datum do (YYYY-MM-DD)")
+):
     return await call_mcp_tool("get_production_stats", {"date_from": date_from, "date_to": date_to})
 
 
