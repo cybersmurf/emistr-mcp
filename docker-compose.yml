@@ -11,5 +11,16 @@ services:
     network_mode: bridge
     stdin_open: true  # Udrží stdin otevřený
     tty: true         # Alokuje pseudo-TTY
-    volumes:
-      - ./config.json:/app/config/config.json:ro
+
+  emistr-api:
+    build: .
+    container_name: emistr-api-server
+    restart: always
+    environment:
+      - EMISTR_CONFIG=/app/config/config.json
+    ports:
+      - "8000:8000"
+    network_mode: bridge
+    command: ["uvicorn", "api_adapter:app", "--host", "0.0.0.0", "--port", "8000"]
+    stdin_open: true
+    tty: true

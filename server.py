@@ -29,13 +29,39 @@ config: Config = None
 _db: DatabaseManager = None
 _anonymizer: DataAnonymizer = None
 _response_builder: ResponseBuilder = None
-SERVER_VERSION = "0.2.4 beta" # Server version identifier
+SERVER_VERSION = "0.2.5 beta" # Server version identifier
 CLIENT_PROTOCOL_VERSION: str | None = None
+
+
+def _tool_to_dict(tool: Any) -> Dict[str, Any]:
+    """Safely convert a Tool (or similar) to a plain JSON-serializable dict."""
+    try:
+        # mcp.types.Tool has .name, .description, .inputSchema
+        name = getattr(tool, 'name', None)
+        description = getattr(tool, 'description', None)
+        input_schema = (
+            getattr(tool, 'inputSchema', None)
+            if getattr(tool, 'inputSchema', None) is not None
+            else getattr(tool, 'input_schema', None)
+        )
+        if name is not None and description is not None:
+            return {
+                "name": name,
+                "description": description,
+                "inputSchema": input_schema or {"type": "object", "properties": {}},
+            }
+        # Mapping/dict fallback
+        if isinstance(tool, Mapping):
+            return dict(tool)
+    except Exception:
+        pass
+    # Last resort: best-effort repr to avoid crashing
+    return {"name": str(getattr(tool, 'name', 'unknown')), "description": str(getattr(tool, 'description', '')), "inputSchema": {"type": "object", "properties": {}}}
 
 
 async def _get_server_offerings() -> Dict[str, Any]:
     tools_list = await list_tools()
-    tools_dicts = [tool.to_dict() if hasattr(tool, 'to_dict') else tool for tool in tools_list]
+    tools_dicts = [_tool_to_dict(tool) for tool in tools_list]
     protocol_version = CLIENT_PROTOCOL_VERSION or "2025-03-26"
     return {
         "protocolVersion": protocol_version,
@@ -227,7 +253,7 @@ async def call_tool(name: str, arguments: Any) -> Sequence[Any]:
         # MCP discovery endpoints
         elif name in ("tools/list", "tools.list"):
             tools_list = await list_tools()
-            tools_dicts = [tool.to_dict() if hasattr(tool, 'to_dict') else tool for tool in tools_list]
+            tools_dicts = [_tool_to_dict(tool) for tool in tools_list]
             return [TextContent(type="text", text=json.dumps({"tools": tools_dicts}, ensure_ascii=False))]
 
         elif name in ("resources/list", "resources.list"):
@@ -417,7 +443,7 @@ async def mcp_post_handler(request: web.Request):
     if tool_name in ('tools/list', 'tools.list'):
         try:
             tools_list = await list_tools()
-            tools_dicts = [tool.to_dict() if hasattr(tool, 'to_dict') else tool for tool in tools_list]
+            tools_dicts = [_tool_to_dict(tool) for tool in tools_list]
             return web.json_response(
                 {"jsonrpc": "2.0", "id": payload_id, "result": {"tools": tools_dicts}},
                 status=200
