@@ -1,5 +1,5 @@
 import json
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 from fastapi import FastAPI, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -8,6 +8,27 @@ from pydantic import BaseModel
 # Importujeme existující MCP server (ve stejném procesu)
 import server as mcp_server
 from mcp.types import Tool, TextContent
+
+
+def parse_optional_int(value: Union[str, int, None]) -> Optional[int]:
+    """Parse optional integer from query param - handles empty strings from WebUI."""
+    if value is None or value == "" or value == "null":
+        return None
+    try:
+        return int(value)
+    except (ValueError, TypeError):
+        return None
+
+
+def parse_optional_bool(value: Union[str, bool, None]) -> Optional[bool]:
+    """Parse optional boolean from query param - handles empty strings from WebUI."""
+    if value is None or value == "" or value == "null":
+        return None
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        return value.lower() in ("true", "1", "yes")
+    return None
 
 app = FastAPI(title="eMISTR REST/OpenAPI Adapter", version="1.0.0")
 
@@ -95,26 +116,34 @@ async def list_tools():
 
 @app.get("/orders")
 async def get_orders(
-    status: Optional[str] = Query(default=""),
-    customer_id: Optional[int] = Query(default=None),
+    status: Optional[str] = Query(default=None),
+    customer_id: Optional[str] = Query(default=None),
     date_from: Optional[str] = Query(default=None),
     date_to: Optional[str] = Query(default=None),
-    limit: Optional[int] = Query(default=50, ge=1, le=1000),
-    offset: Optional[int] = Query(default=0, ge=0),
+    limit: Optional[str] = Query(default=None),
+    offset: Optional[str] = Query(default=None),
     columns: Optional[List[str]] = Query(default=None),
 ):
+    # Parse optional integers from WebUI (handles empty strings)
+    customer_id_int = parse_optional_int(customer_id)
+    limit_int = parse_optional_int(limit)
+    offset_int = parse_optional_int(offset)
+    
     args: Dict[str, Any] = {
         "status": status or "",
-        "customer_id": customer_id,
-        "date_from": date_from,
-        "date_to": date_to,
-        "limit": limit,
-        "offset": offset,
+        "limit": limit_int if limit_int is not None else 50,
+        "offset": offset_int if offset_int is not None else 0,
     }
+    if customer_id_int is not None:
+        args["customer_id"] = customer_id_int
+    if date_from:
+        args["date_from"] = date_from
+    if date_to:
+        args["date_to"] = date_to
     if columns:
         args["columns"] = columns
 
-    return await call_mcp_tool("get_orders", {k: v for k, v in args.items() if v is not None})
+    return await call_mcp_tool("get_orders", args)
 
 
 @app.get("/orders/{order_id}")
@@ -123,18 +152,25 @@ async def get_order_detail(order_id: int):
 
 
 @app.get("/orders:search")
-async def search_orders(search_term: str = Query(...), limit: int = Query(20, ge=1, le=200)):
-    return await call_mcp_tool("search_orders", {"search_term": search_term, "limit": limit})
+async def search_orders(search_term: str = Query(...), limit: Optional[str] = Query(default=None)):
+    limit_int = parse_optional_int(limit)
+    return await call_mcp_tool("search_orders", {"search_term": search_term, "limit": limit_int if limit_int is not None else 20})
 
 
 @app.get("/workers")
 async def get_workers(
-    status: Optional[str] = Query(default=""),
+    status: Optional[str] = Query(default=None),
     group_name: Optional[str] = Query(default=None),
-    limit: Optional[int] = Query(default=50, ge=1, le=1000),
+    limit: Optional[str] = Query(default=None),
 ):
-    args: Dict[str, Any] = {"status": status or "", "group_name": group_name, "limit": limit}
-    return await call_mcp_tool("get_workers", {k: v for k, v in args.items() if v is not None})
+    limit_int = parse_optional_int(limit)
+    args: Dict[str, Any] = {
+        "status": status or "",
+        "limit": limit_int if limit_int is not None else 50
+    }
+    if group_name:
+        args["group_name"] = group_name
+    return await call_mcp_tool("get_workers", args)
 
 
 @app.get("/workers/{worker_id}")
@@ -143,36 +179,50 @@ async def get_worker_detail(worker_id: int):
 
 
 @app.get("/materials")
-async def get_materials(low_stock_only: Optional[bool] = Query(default=False), limit: Optional[int] = Query(default=50, ge=1, le=1000)):
-    return await call_mcp_tool("get_materials", {"low_stock_only": low_stock_only, "limit": limit})
+async def get_materials(low_stock_only: Optional[str] = Query(default=None), limit: Optional[str] = Query(default=None)):
+    low_stock_bool = parse_optional_bool(low_stock_only)
+    limit_int = parse_optional_int(limit)
+    return await call_mcp_tool("get_materials", {
+        "low_stock_only": low_stock_bool if low_stock_bool is not None else False,
+        "limit": limit_int if limit_int is not None else 50
+    })
 
 
 @app.get("/materials/movements")
 async def get_material_movements(
-    material_id: Optional[int] = Query(default=None),
+    material_id: Optional[str] = Query(default=None),
     date_from: Optional[str] = Query(default=None),
     date_to: Optional[str] = Query(default=None),
-    limit: Optional[int] = Query(default=100, ge=1, le=2000),
+    limit: Optional[str] = Query(default=None),
 ):
-    args: Dict[str, Any] = {
-        "material_id": material_id,
-        "date_from": date_from,
-        "date_to": date_to,
-        "limit": limit,
-    }
-    return await call_mcp_tool("get_material_movements", {k: v for k, v in args.items() if v is not None})
+    material_id_int = parse_optional_int(material_id)
+    limit_int = parse_optional_int(limit)
+    args: Dict[str, Any] = {"limit": limit_int if limit_int is not None else 100}
+    if material_id_int is not None:
+        args["material_id"] = material_id_int
+    if date_from:
+        args["date_from"] = date_from
+    if date_to:
+        args["date_to"] = date_to
+    return await call_mcp_tool("get_material_movements", args)
 
 
 @app.get("/operations")
-async def get_operations(operation_group: Optional[str] = Query(default=None), limit: Optional[int] = Query(default=50, ge=1, le=1000)):
-    args: Dict[str, Any] = {"operation_group": operation_group, "limit": limit}
-    return await call_mcp_tool("get_operations", {k: v for k, v in args.items() if v is not None})
+async def get_operations(operation_group: Optional[str] = Query(default=None), limit: Optional[str] = Query(default=None)):
+    limit_int = parse_optional_int(limit)
+    args: Dict[str, Any] = {"limit": limit_int if limit_int is not None else 50}
+    if operation_group:
+        args["operation_group"] = operation_group
+    return await call_mcp_tool("get_operations", args)
 
 
 @app.get("/machines")
-async def get_machines(status_filter: Optional[str] = Query(default=None), limit: Optional[int] = Query(default=50, ge=1, le=1000)):
-    args: Dict[str, Any] = {"status_filter": status_filter, "limit": limit}
-    return await call_mcp_tool("get_machines", {k: v for k, v in args.items() if v is not None})
+async def get_machines(status_filter: Optional[str] = Query(default=None), limit: Optional[str] = Query(default=None)):
+    limit_int = parse_optional_int(limit)
+    args: Dict[str, Any] = {"limit": limit_int if limit_int is not None else 50}
+    if status_filter:
+        args["status_filter"] = status_filter
+    return await call_mcp_tool("get_machines", args)
 
 
 @app.get("/production/stats")
